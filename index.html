@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>FITC Toronto</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+  <script>
+    document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+  </script>
+</head>
+
+<body>
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+      <section>
+        <h1>jQuery to JavaScript</h1>
+        <h2 class="intro">Growing beyond the DOM</h2>
+        <h3>Rich Gilbank</h3>
+      </section>
+
+      <section data-background="#ff9500">
+        <h2>Who is this guy?</h2>
+        <h3>I like the cut of his jib.</h3>
+      </section>
+
+      <section>
+        <h2>About me</h2>
+        <ul>
+          <li>I write code for fun and profit</li>
+          <li>Budding open-source contributor</li>
+          <li>All around nice guy, eh?</li>
+          <li>Front-end developer at Shopify</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Shopify</h2>
+        <ul>
+          <li>A platform to start your new business</li>
+          <li>In-person, online, &amp; more</li>
+          <li>Over 100,000 merchants</li>
+          <li>Over $3 Billion in merchant sales</li>
+        </ul>
+        <img id="shopifyLogo" src="images/shopify.png">
+
+        <aside class="notes">
+          <ul>
+            <li>Enough about me, let's talk about you</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section>
+        <h2>What's all this then?</h2>
+        <h3>Let's learn some JavaScript&trade;</h3>
+      </section>
+
+      <section data-background="#E7003E">
+        <h1>The problem</h1>
+      </section>
+
+      <section>
+        <h1>JDD</h1>
+        <h3>jQuery driven development*</h3>
+        <p class="footnote">* Coined by @darcy</p>
+      </section>
+
+      <section>
+        <h2>A confession</h2>
+      </section>
+
+      <section>
+        <h2>Callback hell</h2>
+        <pre><code contenteditable class="javascript">
+$(document).ready(function(){
+  $.ajax({
+    type: 'POST',
+    url: $('#admin_user_search').attr('action'),
+    data: s_data,
+    success: function(data){
+      $.ajax({
+        type: 'GET',
+        url: data['content'],
+        dataType: 'json',
+        success: function(result){
+          if(result.status == 'success'){
+            if(result.keywords == $('#user_search').val()){
+              var ul = $('<ul></ul>');
+                for(i in result.users){
+                  if(i < 10){
+                    $(ul).append('<li><a href="/admin/users/'+result.users[i].id+'">'+result.users[i].name+'</a></li>');
+
+...
+        </code></pre>
+      </section>
+
+      <section>
+        <h2>Chaining hell</h2>
+        <pre><code contenteditable class="javascript">
+$('div #badSelector').click(function(){
+
+  $(this).fadeOut().text('New text').fadeIn().addClass('changed').parent().addClass('yikes');
+
+});
+        </code></pre>
+      </section>
+
+      <section data-transition="none" data-background-transition="none">
+        <h2>Bad variable declaration and scope</h2>
+        <pre><code contenteditable class="javascript">
+var myVar = 3;
+
+...
+
+$(document).ready(function(){
+  console.log(myVar);
+
+  if(true){
+    var myVar = 5;
+  }
+});
+        </code></pre>
+      </section>
+
+      <section data-background="images/dwight.jpg" data-transition="none" data-background-transition="none" data-background-size="contain">
+      </section>
+
+      <section data-transition="none" data-background-transition="none">
+        <h2>Bad variable declaration and scope</h2>
+        <pre><code contenteditable class="javascript">
+var myVar = 3;
+
+...
+
+$(document).ready(function(){
+  console.log(myVar);  // Prints 'undefined' ಠ_ಠ
+
+  if(true){
+    var myVar = 5;
+  }
+});
+        </code></pre>
+      </section>
+
+      <section data-background="#E7003E">
+        <h1>The solution</h1>
+      </section>
+
+      <section data-background="images/mario.png">
+        <h1 class="eightbit pink-bg">Level-up your JS!</h1>
+      </section>
+
+      <section data-background="#ff9500">
+        <h1>Structure</h1>
+      </section>
+
+      <section data-background="#ff9500">
+        <h1>Maintainability</h1>
+      </section>
+
+      <section data-background="#ff9500">
+        <h1>Performance</h1>
+      </section>
+
+      <section data-background="#ff9500">
+        <h1>I can haz?</h1>
+        <h3>(Getting there)</h3>
+      </section>
+
+      <section data-background="images/robot.jpg">
+        <h1 class="pink-bg">Danger, Will Robinson!</h1><br><br>
+        <h3 class="pink-bg white">(Things to watch out for)</h3>
+      </section>
+
+      <section data-background="images/backtothefuture.jpg">
+        <h1>The future</h1>
+        <h3 class="white">ECMAScript 6</h3>
+      </section>
+
+      <section data-background="#ff9500">
+        <h1>Takeaways</h1>
+      </section>
+
+
+
+
+
+
+
+
+
+      <section data-background="#ff9500">
+        <h1>Javascript: origins</h1>
+      </section>
+
+      <section>
+        <ul>
+          <li>1995: Brendan Eich creates JavaScript in 10 days at Netscape</li>
+          <li class="fragment">A "little brother" to Java</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>What's in a name?</h2>
+      </section>
+
+      <section>
+        <h2>1997: ECMAScript</h2>
+        <h3>(first edition)</h3>
+        <ul>
+          <li class="fragment">1998: 2<sup>nd</sup> edition</li>
+          <li class="fragment">1999: 3<sup>rd</sup> edition</li>
+          <li class="fragment"><span class="rel"><del>4<sup>th</sup> edition</del></span></li>
+          <li class="fragment"><span class="rel"><del>edition 3.1</del></span></li>
+          <li class="fragment">2009: 5<sup>th</sup> edition</li>
+          <li class="fragment">WIP: 6<sup>th</sup> edition</li>
+        </ul>
+      </section>
+
+      <section data-background="#E7003E" data-transition="none" data-background-transition="none">
+        <h1>chaos</h1>
+      </section>
+
+      <section data-background="#fff" data-transition="none" data-background-transition="none">
+        <img src="images/mapquest.jpg" id="mapquest">
+        <img src="images/googlemaps.png" id="googleMaps" class="fragment" data-transition="fade">
+      </section>
+
+      <section>
+        <h2>"ajax"</h2>
+        <div class="fragment">
+          <h3>Coined by this guy:</h3>
+          <img src="images/jesse_james_garrett.jpg">
+          <span class="caption">Jesse James Garrett [Adaptive Path]</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>AJAX requests</h2>
+        <pre><code contenteditable class="javascript">
+var xmlHttp = null;
+if (window.XMLHttpRequest) {
+    // Modern browsers
+    xhr = new XMLHttpRequest();
+}
+else
+{
+    if (window.ActiveXObject) {
+        try {
+            // IE6
+            xhr = new ActiveXObject('MSXML2.XMLHTTP.3.0');
+        } catch(e) {
+            // IE &lt; 5
+            xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+    }
+}
+// Do stuff with xhr
+        </code></pre>
+      </section>
+
+      <section>
+        <h2>DOM traversal</h2>
+        <pre><code contenteditable class="javascript">
+document.getElementById('elemId');
+
+document.getElementsByTagName('button');
+
+document.getElementsByClassName('my-class');
+
+// ...
+document.getElementsByClassName = function(cl) {
+  var matches = [];
+  var elem = this.getElementsByTagName('*');
+  for (var i = 0; i < elem.length; i++) {
+    if((' '+elem[i].className+' ').indexOf(' '+cl+' ') > -1) matches.push(elem[i]);
+  }
+  return matches;
+};
+        </pre></code>
+      </section>
+
+      <section>
+        <h2>jQuery FTW!</h2>
+      </section>
+
+      <section>
+        <h2>AJAX requests</h2>
+        <pre><code contenteditable class="javascript">
+var xmlHttp = null;
+if (window.XMLHttpRequest) {
+    // Modern browsers
+    xhr = new XMLHttpRequest();
+}
+else
+{
+    if (window.ActiveXObject) {
+        try {
+            // IE6
+            xhr = new ActiveXObject('MSXML2.XMLHTTP.3.0');
+        } catch(e) {
+            // IE &lt; 5
+            xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+    }
+}
+// Do stuff with xhr
+        </code></pre>
+        <pre><code contenteditable class="javascript">
+$.ajax( 'test.html' );
+        </code></pre>
+      </section>
+
+      <section>
+        <h2>DOM traversal</h2>
+        <pre><code contenteditable class="javascript">
+document.getElementById('elemId');
+
+document.getElementsByTagName('button');
+
+document.getElementsByClassName('my-class');
+
+// ...
+document.getElementsByClassName = function(cl) {
+  var matches = [];
+  var elem = this.getElementsByTagName('*');
+  for (var i = 0; i < elem.length; i++) {
+    if((' '+elem[i].className+' ').indexOf(' '+cl+' ') > -1) matches.push(elem[i]);
+  }
+  return matches;
+};
+        </pre></code>
+        <pre><code contenteditable class="javascript">
+$('#elemId');
+
+$('button');
+
+$('.my-class');
+        </code></pre>
+      </section>
+
+      <section data-background="#ff9500">
+        <h1>Today</h1>
+        <h3 class="custom-caps">(hooray!)</h3>
+      </section>
+
+      <section>
+        <h2>Ajax requests</h2>
+        <pre><code contenteditable class="javascript">
+// IE &gt;= 7
+var xhr = new XMLHttpRequest();
+xhr.onload = function(){
+    console.log(this.responseText);
+}
+xhr.open('get', 'test.html', true);
+xhr.send();
+        </code></pre>
+      </section>
+
+      <section>
+        <h2>Dom traversal</h2>
+        <pre><code contenteditable class="javascript">
+// IE &gt;= 8
+var elem = document.querySelector('.container > .elem');
+
+var children = elem.querySelectorAll('button');
+        </code></pre>
+      </section>
+
+      <section data-background="images/backtothefuture.jpg">
+        <h1>The future</h1>
+      </section>
+
+      <section data-background="#ff9500">
+        <h1>Block-level scoping</h1>
+      </section>
+
+      <section>
+        <h2>The problem</h2>
+        <pre><code contenteditable class="javascript">
+var years = [];
+
+for (var i = 0; i &lt;= 9; i++) {
+    years[i] = function () {
+        console.log("The year is 201" + i);
+    };
+}
+
+years[4]();
+        </pre></code>
+        <pre class="fragment"><code contenteditable class="javascript">
+// The year is 2019
+// ಠ_ಠ
+        </code></pre>
+      </section>
+
+      <section>
+        <h2>The Solution</h2>
+        <pre><code contenteditable class="javascript">
+var years = [];
+
+for (let i = 0; i &lt;= 9; i++) {
+    years[i] = function () {
+        console.log("The year is 201" + i);
+    };
+}
+
+years[4]();
+        </code></pre>
+        <pre><code contenteditable class="javascript">
+// The year is 2014
+        </code></pre>
+      </section>
+
+      <section data-background="#ff9500">
+        <h1>For-of</h1>
+      </section>
+
+      <section>
+        <h2>Today</h2>
+        <pre><code contenteditable class="javascript">
+var myArray = ['a', 'b', 'c', 'd', 'e'];
+
+for(var i in myArray) {
+    console.log(i);  // 0, 1, 2, 3, 4
+}
+        </code></pre>
+        <br><br>
+        <h2>The Future</h2>
+        <pre><code contenteditable class="javascript">
+var myArray = ['a', 'b', 'c', 'd', 'e'];
+
+for(var i of myArray) {
+    console.log(i);  // a, b, c, d, e
+}
+        </code></pre>
+      </section>
+
+      <section data-background="#ff9500">
+        <h2>Default parameters and spread operators</h2>
+      </section>
+
+      <section>
+        <h2>Default parameters</h2>
+        <pre><code contenteditable class="javascript">
+function myFunc(isWin = true, muchAwesome = true, suchBad = false){
+
+    // Function-y stuff
+
+}
+        </code></pre>
+        <br><br>
+        <h2>Spread operators</h2>
+        <pre><code contenteditable class="javascript">
+function myFunc(arg1, ...otherArgs) {
+
+    for(var i of otherArgs) {
+        console.log(i);
+    }
+
+}
+        </code></pre>
+      </section>
+
+      <section>
+        <h2>And lots of other things...</h2>
+        <h3>classes, destructuring, constants, generators, proxies, maps, weak maps, array comprehension, binary data, modules...</h3>
+        <h2>And more!</h2>
+      </section>
+
+      <section data-background="#F33D6E">
+        <div style="font-size:100px; line-height: 100px; font-weight:bold;">Are we there yet?</div>
+        <div style="font-size:90px; line-height: 90px; color: rgba(255,255,255,0.9);">Are we there yet?</div>
+        <div style="font-size:80px; line-height: 80px; color: rgba(255,255,255,0.8);">Are we there yet?</div>
+        <div style="font-size:70px; line-height: 70px; color: rgba(255,255,255,0.7);">Are we there yet?</div>
+        <div style="font-size:60px; line-height: 60px; color: rgba(255,255,255,0.6);">Are we there yet?</div>
+        <div style="font-size:50px; line-height: 50px; color: rgba(255,255,255,0.5);">Are we there yet?</div>
+        <div style="font-size:40px; line-height: 40px; color: rgba(255,255,255,0.4);">Are we there yet?</div>
+        <div style="font-size:30px; line-height: 30px; color: rgba(255,255,255,0.3);">Are we there yet?</div>
+        <div style="font-size:20px; line-height: 20px; color: rgba(255,255,255,0.2);">Are we there yet?</div>
+        <div style="font-size:10px; line-height: 10px; color: rgba(255,255,255,0.1);">Are we there yet?</div>
+      </section>
+
+      <section data-background="#F33D6E" data-transition="none">
+        <h2>We'll get there when we get there!</h2>
+      </section>
+
+      <section data-background="images/traceur.png">
+        <h3 style="bottom: -510px; position: absolute; width: 100%;">https://github.com/google/traceur-compiler</h3>
+      </section>
+
+      <section data-background="images/es6fiddle.png">
+        <h3 style="bottom: -510px; position: absolute; width: 100%;">http://www.es6fiddle.net</h3>
+      </section>
+
+      <section data-background="images/es6repl.png">
+        <h3 style="bottom: -510px; position: absolute; width: 100%;">http://bit.ly/1gOlV5W</h3>
+      </section>
+
+      <section data-background="#F33D6E">
+        <h2>"But, I don't care about any of that!"</h2>
+      </section>
+
+      <section data-background="#ff9500">
+        <h1>Web components</h1>
+      </section>
+
+      <section>
+        <h2>"Web components" means:</h2>
+        <ul>
+          <li>Shadow DOM</li>
+          <li>HTML Templates</li>
+          <li>Custom elements</li>
+          <li>HTML Imports</li>
+        </ul>
+      </section>
+
+      <section data-background="images/gmail.png">
+      </section>
+
+      <section>
+        <h2>What it <em>really</em> means:</h2>
+        <pre><code contenteditable class="language-html">
+  <header-element>Page Title</header-element>
+
+  <main-content>
+      <video-player></video-player>
+
+      <comments>
+          <comment>
+              <user-name>Bob Smith</user-name>
+              <comment-body>I like this video</comment-body>
+          </comment>
+          <comment>
+              <user-name>That Guy</user-name>
+              <comment-body>I really don't like this video</comment-body>
+          </comment>
+      </comments>
+
+  </main-content>
+
+  <footer></footer>
+        </code></pre>
+      </section>
+
+      <section>
+        <h2>Enter: Polymer</h2>
+        <h3>http://polymer-project.org</h3>
+      </section>
+
+      <section data-background="images/polymer.png">
+      </section>
+
+      <section>
+        <h1>Thanks!</h1>
+        <h3>@richgilbank</h3>
+      </section>
+
+    </div>
+
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.min.js"></script>
+
+  <script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: false,
+      progress: false,
+      history: true,
+      center: true,
+
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+      backgroundTransition: 'slide',
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+        { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+    });
+
+  </script>
+
+</body>
+</html>

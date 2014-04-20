@@ -1,0 +1,169 @@
+/*
+ * Green: 00AC6B
+ * Green-semidark: 20815D
+ * Green-dark: 007046
+ * Green-semilight: 35D699
+ * Green-light: 60D6A9
+ *
+ * Orange: FF9500
+ * Orange-semidark: BF8430
+ * Orange-dark: A66100
+ * Orange-semilight: FFB040
+ * Orange: light: FFC573
+ *
+ * Pink: E7003E
+ * Pink-semidark: AD2B4E
+ * Pink-dark: 960028
+ * Pink-semilight: F33D6E
+ * Pink-light: F36D91
+ *
+*/
+@font-face {
+  font-family: 'Montserrat';
+  src: url('fonts/Montserrat-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: '8bit';
+  src: url('fonts/8bit.woff') format('woff');
+  font-weight: 400;
+}
+
+body {
+  background: #00AC6B;
+  color: #fff;
+  font-family: 'Montserrat';
+  font-size: 30px;
+}
+
+.reveal h1 {
+  font-size: 100px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.reveal h2 {
+  font-size: 60px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+.reveal h2.intro {
+  font-size: 40px;
+  margin-bottom: 90px;
+}
+
+.reveal h3 {
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #007046;
+  margin-bottom: 20px;
+}
+.reveal section[data-background="#ff9500"] h3 {
+  color: #A66100;
+}
+
+.reveal h1.custom-caps, .reveal h2.custom-caps, .reveal h3.custom-caps {
+  text-transform: none;
+}
+
+.reveal ul {
+  list-style-type: none;
+}
+.reveal ul li {
+  border-left: 10px solid #007046;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.reveal .rel {
+  position: relative;
+}
+.reveal .caption {
+  text-align: right;
+  float: right;
+  margin-right: 20px;
+  color: #007046;
+}
+
+del {
+  text-decoration: none;
+}
+del:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  background: #007046;
+  margin-top: -20px;
+}
+
+.reveal pre, .reveal pre code {
+  font-family: 'Monaco', 'Lucida Console', monospace;
+}
+
+.reveal .footnote {
+  color: #007046;
+  font-size: 20px;
+  position: absolute;
+  bottom: -200px;
+  right: 0;
+}
+
+.reveal .eightbit {
+  font-family: '8bit';
+}
+
+.reveal .white {
+  color: #fff;
+}
+
+.reveal .green-bg {
+  background-color: #00AC6B;
+  display: inline;
+}
+.reveal .pink-bg {
+  background-color: #E7003E;
+  display: inline;
+}
+
+
+
+
+
+#shopifyLogo {
+  height: 300px;
+  margin-bottom: -150px;
+  margin-top: 50px;
+}
+#mapquest {
+}
+#googleMaps {
+  position: absolute;
+  left: 50%;
+  margin-left: -350px;
+  width: 700px;
+  height: 558px;
+  max-height: none;
+}
+#outline {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 150px;
+  width: auto;
+  margin-left: -220px;
+  margin-top: -30px;
+}
+
