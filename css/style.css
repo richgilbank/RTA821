@@ -18,6 +18,11 @@
  * Pink-light: F36D91
  *
 */
+
+html * {
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: 'Montserrat';
   src: url('fonts/Montserrat-Bold.ttf') format('truetype');
@@ -144,12 +149,27 @@ del:after {
   display: inline;
 }
 
+.reveal blockquote {
+  margin-bottom: 40px;
+}
 
-
-
-
-#shopifyLogo {
-  height: 300px;
-  margin-bottom: -150px;
-  margin-top: 50px;
+ul.logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+ul.logos li {
+  flex: 1;
+  border-left: none;
+  margin: auto;
+  padding: 20px;
+  min-width: 30%;
+  display: flex;
+  justify-content: center;
+}
+ul.logos--big li {
+  min-width: 20%;
+}
+ul.logos li img {
+  /* max-height: 200px; */
 }
