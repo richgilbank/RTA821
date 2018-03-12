@@ -19,6 +19,10 @@
  *
 */
 
+html {
+  background: #00AC6B;
+}
+
 html * {
   box-sizing: border-box;
 }
